@@ -3,17 +3,20 @@ using Toybox.Graphics as Gfx;
 
 class UiHelperDetailView extends UiHelperBase {
 
+    // data
     var title;
     var unit;
     var data;
-
-    var colorBar;
-    var colorShadow;
 
     var valueMax = 0;
     var valueTot = 0;
     var valueAvg = 0;
 
+    // color scheme
+    var colorBar;
+    var colorShadow;
+
+    // layouting
     var x;
     var y;
     var xs;

@@ -3,6 +3,7 @@ using Toybox.Graphics as Gfx;
 
 class UiHelperBase {
 
+    // color scheme
     var colorFg;
     var colorFg2;
     var colorBg;
@@ -13,6 +14,7 @@ class UiHelperBase {
     var colorStep;
     var colorDist;
 
+    // layouting
     var dc;
     var width;
     var height;

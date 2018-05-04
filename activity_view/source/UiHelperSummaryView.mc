@@ -3,20 +3,22 @@ using Toybox.Graphics as Gfx;
 
 class UiHelperSummaryView extends UiHelperBase {
 
+    //data
     var title;
-        var stepNow;
-        var calNow;
-        var distNow;
-        var stepMax = 0;
-        var stepSum = 0;
-        var distMax = 0;
-        var distSum = 0;
-        var calMax = 0;
-        var calSum = 0;
-        var stepAvg;
-        var distAvg;
-        var calAvg;
+    var stepNow;
+    var calNow;
+    var distNow;
+    var stepMax = 0;
+    var stepSum = 0;
+    var distMax = 0;
+    var distSum = 0;
+    var calMax = 0;
+    var calSum = 0;
+    var stepAvg;
+    var distAvg;
+    var calAvg;
 
+    // layouting
     var x;
     var y;
     var xd;
