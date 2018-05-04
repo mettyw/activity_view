@@ -9,5 +9,5 @@
             <iq:language>eng</iq:language>
         </iq:languages>
         <iq:barrels/>
-    </iq:application>
+    </iq:application> 
 </iq:manifest>
