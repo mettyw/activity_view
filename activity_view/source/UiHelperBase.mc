@@ -47,15 +47,7 @@ class UiHelperBase {
     }
 
     public function getDisplayValue(value) {
-        if ( value instanceof Toybox.Lang.Double ) {
-            if ( value > 9999 ) {
-                return value.format("%d");
-            }
-            else {
-                return value.format("%.1f");
-            }
-        }
-        else if ( value instanceof Toybox.Lang.Float ) {
+        if ( value instanceof Toybox.Lang.Double || value instanceof Toybox.Lang.Float) {
             if ( value > 9999 ) {
                 return value.format("%d");
             }

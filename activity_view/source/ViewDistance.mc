@@ -9,11 +9,12 @@ class ViewDistance extends ViewDetailsBase {
         colorBar = Gfx.COLOR_GREEN;
         colorBarShadow = Gfx.COLOR_DK_GREEN;
         title = "Distance";
-        unit = "km";
+        unit = "m";
     }
 
     function getItemValue(item) {
-        return item.distance/100.0;
+        // convert from cm to m
+        return item.distance/(100.0);
     }
 
     function getDayText(moment) {
