@@ -24,3 +24,6 @@ Supported devices
 -----------------
 * Forerunner 235 
 * Forerunner 230
+
+
+Soon to be available at [Garmin Connect IQ Store](https://apps.germin.com)
