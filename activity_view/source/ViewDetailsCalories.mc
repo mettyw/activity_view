@@ -1,7 +1,7 @@
 using Toybox.WatchUi as Ui;
 using Toybox.Graphics as Gfx;
 
-class ViewCalories extends ViewDetailsBase {
+class ViewDetailsCalories extends ViewDetailsBase {
 
     function initialize(aDelegate) {
         ViewDetailsBase.initialize(aDelegate);
@@ -14,10 +14,6 @@ class ViewCalories extends ViewDetailsBase {
 
     function getItemValue(item) {
         return item.calories;
-    }
-
-    function getDayText(moment) {
-        return Time.Gregorian.info(moment, Time.FORMAT_LONG).day_of_week.substring(0, 2);
     }
 
 

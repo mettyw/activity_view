@@ -51,12 +51,14 @@ class UiHelperDetailView extends UiHelperBase {
         unit = aUnit;
         data = aData;
 
-        // skip item 1 for statistics because this is the current value
-        for (var i = 1; i < data.size(); i++) {
+        for (var i = 0; i < data.size(); i++) {
             if ( data[i][0] > valueMax ) {
                 valueMax = data[i][0];
             }
-            valueTot = valueTot + data[i][0];
+            // skip item 0 for statistics because this is the current value
+            if ( i != 0 ) {
+                valueTot = valueTot + data[i][0];
+            }
         }
         // skip item 1 for statistics because this is the current value
         valueAvg = valueTot/(data.size() - 1);
@@ -65,7 +67,7 @@ class UiHelperDetailView extends UiHelperBase {
 
     public function draw() {
         self.drawUi();
-        self.drawTotal();
+        self.drawTitle();
         self.drawAverage();
 
         for (var i = 0; i < data.size(); i++) {
@@ -81,8 +83,6 @@ class UiHelperDetailView extends UiHelperBase {
 //        dc.setColor(colorBar, Gfx.COLOR_TRANSPARENT);
 //        dc.fillRectangle(0, 0, width, 23);
 
-        dc.setColor(colorFg, Gfx.COLOR_TRANSPARENT);
-        dc.drawText(width / 2, 1, Gfx.FONT_SMALL, title, Gfx.TEXT_JUSTIFY_CENTER);
 
         dc.setColor(colorLine, Gfx.COLOR_TRANSPARENT);
         // horizontal lines
@@ -94,9 +94,12 @@ class UiHelperDetailView extends UiHelperBase {
         dc.drawLine(xs-5, y, xs-5, yb);
     }
 
-    public function drawTotal() {
-        dc.setColor(colorFg2, Gfx.COLOR_TRANSPARENT);
-        dc.drawText(width / 2, yb, Gfx.FONT_SMALL, "Sum: " + getDisplayValue(valueTot) + " " + unit, Gfx.TEXT_JUSTIFY_CENTER);
+    public function drawTitle() {
+        dc.setColor(colorFg, Gfx.COLOR_TRANSPARENT);
+        //dc.drawText(width / 2, 1, Gfx.FONT_SMALL, title, Gfx.TEXT_JUSTIFY_CENTER);
+        dc.drawText(width / 2, 1, Gfx.FONT_SMALL, title + " (" + getDisplayValue(valueTot) + " " + unit + ")", Gfx.TEXT_JUSTIFY_CENTER);
+        //dc.setColor(colorFg2, Gfx.COLOR_TRANSPARENT);
+        //dc.drawText(width / 2, yb, Gfx.FONT_SMALL, "Sum: " + getDisplayValue(valueTot) + " " + unit, Gfx.TEXT_JUSTIFY_CENTER);
     }
 
     public function drawAverage() {
@@ -118,6 +121,19 @@ class UiHelperDetailView extends UiHelperBase {
         dc.setColor(colorAvg, Gfx.COLOR_TRANSPARENT);
         dc.drawLine(xs + value, y, xs + value, yb);
 
+        var text = getDisplayValue(valueAvg);
+
+        var textWidth = dc.getTextWidthInPixels(text, Gfx.FONT_SMALL);
+
+        var xp = xs + value - textWidth/2;
+        if ( (xs + value + textWidth/2) < (dc.getWidth()-40) ) {
+            xp = xs + value;
+        }
+        if ( ((xs + value - textWidth/2) < 40) ) {
+            xp = xs + value + textWidth/2;
+        }
+
+        dc.drawText(xp, yb, Gfx.FONT_SMALL, text, Gfx.TEXT_JUSTIFY_CENTER);
     }
 
     public function drawDataRow(index, day, value) {

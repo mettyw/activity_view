@@ -103,7 +103,7 @@ class UiHelperSummaryView extends UiHelperBase {
 
         drawCellValue(1, 0, "kCal");
         drawCellValue(2, 0, "steps");
-        drawCellValue(3, 0, "km");
+        drawCellValue(3, 0, "m");
 
         dc.setColor(colorCal, Gfx.COLOR_TRANSPARENT);
         drawCellValue(1, 1, calSum);
