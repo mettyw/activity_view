@@ -8,6 +8,8 @@ class ViewStateController extends Ui.InputDelegate {
     const KEY_LOADLASTVIEWSTATE = "LoadLastViewState";
     const KEY_LASTVIEWSTATE = "LastViewState";
 
+    const VIEW_COUNT = 4;
+
     public var viewState = 0;
 
     // Constructor
@@ -17,8 +19,11 @@ class ViewStateController extends Ui.InputDelegate {
         if ( loadLastViewState != null && loadLastViewState == true ) {
             var lastViewState = App.getApp().getProperty(KEY_LASTVIEWSTATE);
             //var lastViewState = Storage.getValue(KEY_LASTVIEWSTATE);
-            if ( lastViewState != null ) {
+            if ( lastViewState != null && lastViewState < VIEW_COUNT ) {
                 viewState = lastViewState;
+            }
+            else {
+                viewState = 0;
             }
         }
     }
@@ -34,14 +39,17 @@ class ViewStateController extends Ui.InputDelegate {
 
     public function getCurrentView() {
         if ( viewState == 1 ) {
-          return new ViewCalories(self);
+          return new ViewDetailsCalories(self);
         }
         else if ( viewState == 2 ) {
-          return new ViewSteps(self);
+          return new ViewDetailsSteps(self);
         }
         else if ( viewState == 3 ) {
-          return new ViewDistance(self);
+          return new ViewDetailsDistance(self);
         }
+        /*else if ( viewState == 4 ) {
+          return new ViewOverlay(self);
+        }*/
         else {
           return new ViewSummary(self);
         }
@@ -50,7 +58,7 @@ class ViewStateController extends Ui.InputDelegate {
     function onKey(evt) {
         if (evt.getKey() == Ui.KEY_ENTER) {
             var delegate = new ViewStateController();
-            viewState = (viewState + 1 ) % 4;
+            viewState = (viewState + 1 ) % VIEW_COUNT;
             delegate.setState(viewState);
 
             var newView = delegate.getCurrentView();

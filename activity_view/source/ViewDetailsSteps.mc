@@ -1,7 +1,7 @@
 using Toybox.WatchUi as Ui;
 using Toybox.Graphics as Gfx;
 
-class ViewSteps extends ViewDetailsBase {
+class ViewDetailsSteps extends ViewDetailsBase {
 
     function initialize(aDelegate) {
         ViewDetailsBase.initialize(aDelegate);
@@ -16,7 +16,4 @@ class ViewSteps extends ViewDetailsBase {
         return item.steps;
     }
 
-    function getDayText(moment) {
-        return Time.Gregorian.info(moment, Time.FORMAT_LONG).day_of_week.substring(0, 2);
-    }
 }

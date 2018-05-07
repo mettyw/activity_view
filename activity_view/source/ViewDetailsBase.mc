@@ -1,9 +1,7 @@
 using Toybox.WatchUi as Ui;
 using Toybox.Graphics as Gfx;
 
-class ViewDetailsBase extends Ui.View {
-
-    var delegate;
+class ViewDetailsBase extends ViewBase {
 
     var colorBar = Gfx.COLOR_BLUE;
     var colorBarShadow = Gfx.COLOR_DK_BLUE;
@@ -11,26 +9,12 @@ class ViewDetailsBase extends Ui.View {
     var unit = "unit";
 
     function initialize(aDelegate) {
-        View.initialize();
-        delegate = aDelegate;
-    }
-
-    function onHide() {
-        delegate.persistState();
-    }
-
-    // Called when this View is brought to the foreground. Restore
-    // the state of this View and prepare it to be shown. This includes
-    // loading resources into memory.
-    function onShow() {
+        ViewBase.initialize(aDelegate);
     }
 
     // Update the view
     function onUpdate(dc) {
-        if (ActivityMonitor.getHistory().size() == 0) {
-            dc.setColor(Gfx.COLOR_BLACK, Gfx.COLOR_TRANSPARENT);
-            dc.drawText(109, 109, Graphics.FONT_TINY, "NO DATA",
-            Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+        if ( ViewBase.checkHasData() == false ) {
             return;
         }
 
@@ -54,10 +38,6 @@ class ViewDetailsBase extends Ui.View {
 
     function getItemValue(item) {
         return "n/a";
-    }
-
-    function getDayText(moment) {
-        return Time.Gregorian.info(moment, Time.FORMAT_LONG).day_of_week.substring(0, 2);
     }
 
 }

@@ -11,8 +11,11 @@ class UiHelperBase {
     var colorAvg;
     var colorNow;
     var colorCal;
+    var colorCalShadow;
     var colorStep;
+    var colorStepShadow;
     var colorDist;
+    var colorDistShadow;
 
     // layouting
     var dc;
@@ -32,8 +35,11 @@ class UiHelperBase {
         colorLine = Gfx.COLOR_DK_GRAY;
         colorNow = Gfx.COLOR_DK_GRAY;
         colorCal = Gfx.COLOR_BLUE;
+        colorCalShadow = Gfx.COLOR_DK_BLUE;
         colorStep = Gfx.COLOR_YELLOW;
+        colorStepShadow = Gfx.COLOR_ORANGE;
         colorDist = Gfx.COLOR_GREEN;
+        colorDistShadow = Gfx.COLOR_DK_GREEN;
     }
 
     function initLayout(aDc) {
