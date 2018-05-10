@@ -4,6 +4,9 @@
     <string id="AppVersionTitle">version</string>
     
     <string id="LoadLastScreen">Load last screen</string>
+    <string id="ColorSchemeTitle">Background Color</string>
+    <string id="ColorSchemeBlack">Black</string>
+    <string id="ColorSchemeWhite">White</string>
 
 
 </strings>

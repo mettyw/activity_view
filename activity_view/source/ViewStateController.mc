@@ -8,7 +8,7 @@ class ViewStateController extends Ui.InputDelegate {
     const KEY_LOADLASTVIEWSTATE = "LoadLastViewState";
     const KEY_LASTVIEWSTATE = "LastViewState";
 
-    const VIEW_COUNT = 4;
+    const VIEW_COUNT = 5;
 
     public var viewState = 0;
 
@@ -47,9 +47,9 @@ class ViewStateController extends Ui.InputDelegate {
         else if ( viewState == 3 ) {
           return new ViewDetailsDistance(self);
         }
-        /*else if ( viewState == 4 ) {
+        else if ( viewState == 4 ) {
           return new ViewOverlay(self);
-        }*/
+        }
         else {
           return new ViewSummary(self);
         }
