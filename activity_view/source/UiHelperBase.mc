@@ -1,21 +1,10 @@
 using Toybox.WatchUi as Ui;
 using Toybox.Graphics as Gfx;
+using Toybox.Application as App;
+using Toybox.Application.Storage as Storage;
 
 class UiHelperBase {
-
-    // color scheme
-    var colorFg;
-    var colorFg2;
-    var colorBg;
-    var colorLine;
-    var colorAvg;
-    var colorNow;
-    var colorCal;
-    var colorCalShadow;
-    var colorStep;
-    var colorStepShadow;
-    var colorDist;
-    var colorDistShadow;
+    var colors;
 
     // layouting
     var dc;
@@ -24,22 +13,8 @@ class UiHelperBase {
     // max width of data row box
     var maxWidth;
 
-    function initialize() {
-    }
-
-    function initColors() {
-        colorFg = Gfx.COLOR_WHITE;
-        colorFg2 = Gfx.COLOR_LT_GRAY;
-        colorBg = Gfx.COLOR_BLACK;
-        colorAvg = Gfx.COLOR_PINK;
-        colorLine = Gfx.COLOR_DK_GRAY;
-        colorNow = Gfx.COLOR_DK_GRAY;
-        colorCal = Gfx.COLOR_BLUE;
-        colorCalShadow = Gfx.COLOR_DK_BLUE;
-        colorStep = Gfx.COLOR_YELLOW;
-        colorStepShadow = Gfx.COLOR_ORANGE;
-        colorDist = Gfx.COLOR_GREEN;
-        colorDistShadow = Gfx.COLOR_DK_GREEN;
+    function initialize(aColorScheme) {
+        colors = aColorScheme;
     }
 
     function initLayout(aDc) {

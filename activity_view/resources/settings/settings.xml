@@ -1,11 +1,10 @@
 <settings>
-<!--     <setting propertyKey="@Properties.color" title="@Strings.ColorTitle">
+	<setting propertyKey="@Properties.ColorScheme" title="@Strings.ColorSchemeTitle">
         <settingConfig type="list">
-            <listEntry value="0xFFAA00">@Strings.ColorYellow</listEntry>                        
-            <listEntry value="0xFF5500">@Strings.ColorOrange</listEntry>
+            <listEntry value="0">@Strings.ColorSchemeBlack</listEntry>                        
+            <listEntry value="1">@Strings.ColorSchemeWhite</listEntry>
         </settingConfig>
-    </setting>
- -->    
+    </setting>    
 
     <setting propertyKey="@Properties.LoadLastViewState" title="@Strings.LoadLastScreen">
         <settingConfig type="boolean" />

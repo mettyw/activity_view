@@ -3,11 +3,11 @@ using Toybox.Graphics as Gfx;
 
 class ViewDetailsDistance extends ViewDetailsBase {
 
-    function initialize(aDelegate) {
-        ViewDetailsBase.initialize(aDelegate);
+    function initialize(aDelegate, aColorScheme) {
+        ViewDetailsBase.initialize(aDelegate, aColorScheme);
 
-        colorBar = Gfx.COLOR_GREEN;
-        colorBarShadow = Gfx.COLOR_DK_GREEN;
+        colorBar = aColorScheme.colorDist;
+        colorBarShadow = aColorScheme.colorDistShadow;
         title = "Distance";
         unit = "m";
     }

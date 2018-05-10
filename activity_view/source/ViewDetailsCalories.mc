@@ -3,11 +3,11 @@ using Toybox.Graphics as Gfx;
 
 class ViewDetailsCalories extends ViewDetailsBase {
 
-    function initialize(aDelegate) {
-        ViewDetailsBase.initialize(aDelegate);
+    function initialize(aDelegate, aColorScheme) {
+        ViewDetailsBase.initialize(aDelegate, aColorScheme);
 
-        colorBar = Gfx.COLOR_BLUE;
-        colorBarShadow = Gfx.COLOR_DK_BLUE;
+        colorBar = aColorScheme.colorCal;
+        colorBarShadow = aColorScheme.colorCalShadow;
         title = "Calories";
         unit = "kCal";
     }

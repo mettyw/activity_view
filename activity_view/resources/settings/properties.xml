@@ -1,4 +1,5 @@
 <properties>
     <property id="LastViewState" type="number">0</property>
     <property id="LoadLastViewState" type="boolean">true</property>
+    <property id="ColorScheme" type="number">0</property>
 </properties>

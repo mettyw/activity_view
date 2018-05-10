@@ -3,8 +3,8 @@ using Toybox.Graphics as Gfx;
 
 class ViewSummary extends ViewBase {
 
-    function initialize(aDelegate) {
-        ViewBase.initialize(aDelegate);
+    function initialize(aDelegate, aColorScheme) {
+        ViewBase.initialize(aDelegate, aColorScheme);
     }
 
     // Update the view
@@ -50,8 +50,7 @@ class ViewSummary extends ViewBase {
 
         var data = [stepNow, calNow, distNow, stepMax, stepSum, distMax, distSum, calMax, calSum, stepAvg, distAvg, calAvg];
 
-        var uiHelper = new UiHelperSummaryView();
-        uiHelper.initColors();
+        var uiHelper = new UiHelperSummaryView(colorScheme);
         uiHelper.initLayout(dc);
         uiHelper.initData("Summary", data);
         uiHelper.draw();

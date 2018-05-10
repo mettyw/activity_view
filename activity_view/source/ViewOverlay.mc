@@ -3,8 +3,8 @@ using Toybox.Graphics as Gfx;
 
 class ViewOverlay extends ViewBase {
 
-    function initialize(aDelegate) {
-        ViewBase.initialize(aDelegate);
+    function initialize(aDelegate, aColorScheme) {
+        ViewBase.initialize(aDelegate, aColorScheme);
     }
 
     // Update the view
@@ -24,8 +24,7 @@ class ViewOverlay extends ViewBase {
             data[i+1] = getItemValues(item);
         }
 
-        var uiHelper = new UiHelperOverlayView();
-        uiHelper.initColors();
+        var uiHelper = new UiHelperOverlayView(colorScheme);
         uiHelper.initLayout(dc);
         uiHelper.initData("Graph", data);
         uiHelper.draw();

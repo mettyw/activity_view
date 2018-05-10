@@ -4,10 +4,12 @@ using Toybox.Graphics as Gfx;
 class ViewBase extends Ui.View {
 
     var delegate;
+    var colorScheme;
 
-    function initialize(aDelegate) {
+    function initialize(aDelegate, aColorScheme) {
         View.initialize();
         delegate = aDelegate;
+        colorScheme = aColorScheme;
     }
 
     function onHide() {
