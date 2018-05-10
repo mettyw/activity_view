@@ -10,7 +10,9 @@ class ViewStateController extends Ui.InputDelegate {
 
     const VIEW_COUNT = 5;
 
-    public var viewState = 0;
+    private var viewState = 0;
+    private var colorScheme;
+
 
     // Constructor
     function initialize() {
@@ -26,6 +28,8 @@ class ViewStateController extends Ui.InputDelegate {
                 viewState = 0;
             }
         }
+
+        colorScheme = new ColorScheme();
     }
 
     function setState(newState) {
@@ -39,19 +43,19 @@ class ViewStateController extends Ui.InputDelegate {
 
     public function getCurrentView() {
         if ( viewState == 1 ) {
-          return new ViewDetailsCalories(self);
+          return new ViewDetailsCalories(self, colorScheme);
         }
         else if ( viewState == 2 ) {
-          return new ViewDetailsSteps(self);
+          return new ViewDetailsSteps(self, colorScheme);
         }
         else if ( viewState == 3 ) {
-          return new ViewDetailsDistance(self);
+          return new ViewDetailsDistance(self, colorScheme);
         }
         else if ( viewState == 4 ) {
-          return new ViewOverlay(self);
+          return new ViewOverlay(self, colorScheme);
         }
         else {
-          return new ViewSummary(self);
+          return new ViewSummary(self, colorScheme);
         }
     }
 

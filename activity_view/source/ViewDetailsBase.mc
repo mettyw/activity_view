@@ -8,8 +8,8 @@ class ViewDetailsBase extends ViewBase {
     var title = "Title";
     var unit = "unit";
 
-    function initialize(aDelegate) {
-        ViewBase.initialize(aDelegate);
+    function initialize(aDelegate, aColorScheme) {
+        ViewBase.initialize(aDelegate, aColorScheme);
     }
 
     // Update the view
@@ -27,7 +27,7 @@ class ViewDetailsBase extends ViewBase {
             data[i+1] = [getItemValue(item), getDayText(item.startOfDay)];
         }
 
-        var uiHelper = new UiHelperDetailView();
+        var uiHelper = new UiHelperDetailView(colorScheme);
         uiHelper.initColors(colorBar, colorBarShadow);
         uiHelper.initLayout(dc);
         uiHelper.initData(title, unit, data);

@@ -23,13 +23,12 @@ class UiHelperDetailView extends UiHelperBase {
     var yd;
     var yb;
 
-    function initialize() {
-        UiHelperBase.initialize();
+    function initialize(aColorScheme) {
+        UiHelperBase.initialize(aColorScheme);
     }
 
 
     function initColors(aColorBar, aColorShadow) {
-        UiHelperBase.initColors();
         colorBar = aColorBar;
         colorShadow = aColorShadow;
     }
@@ -77,14 +76,14 @@ class UiHelperDetailView extends UiHelperBase {
     }
 
     public function drawUi() {
-        dc.setColor(colorFg, colorBg);
+        dc.setColor(colors.colorFg, colors.colorBg);
         dc.clear();
 
 //        dc.setColor(colorBar, Gfx.COLOR_TRANSPARENT);
 //        dc.fillRectangle(0, 0, width, 23);
 
 
-        dc.setColor(colorLine, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(colors.colorLine, Gfx.COLOR_TRANSPARENT);
         // horizontal lines
         dc.drawLine(x, y, width-x, y);
         dc.drawLine(x, y+yd+1, width-x, y+yd+1);
@@ -95,7 +94,7 @@ class UiHelperDetailView extends UiHelperBase {
     }
 
     public function drawTitle() {
-        dc.setColor(colorFg, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(colors.colorFg, Gfx.COLOR_TRANSPARENT);
         //dc.drawText(width / 2, 1, Gfx.FONT_SMALL, title, Gfx.TEXT_JUSTIFY_CENTER);
         dc.drawText(width / 2, 1, Gfx.FONT_SMALL, title + " (" + getDisplayValue(valueTot) + " " + unit + ")", Gfx.TEXT_JUSTIFY_CENTER);
         //dc.setColor(colorFg2, Gfx.COLOR_TRANSPARENT);
@@ -118,7 +117,7 @@ class UiHelperDetailView extends UiHelperBase {
         dc.drawLine(xs + maxWidth*1.0, 23, xs + maxWidth*1.0, yb);
         */
 
-        dc.setColor(colorAvg, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(colors.colorAvg, Gfx.COLOR_TRANSPARENT);
         dc.drawLine(xs + value, y, xs + value, yb);
 
         var text = getDisplayValue(valueAvg);
@@ -141,9 +140,9 @@ class UiHelperDetailView extends UiHelperBase {
         var valueText = UiHelperBase.getDisplayValue(value);
 
         if ( index == 0 ) {
-            dc.setColor(colorNow, Gfx.COLOR_TRANSPARENT);
+            dc.setColor(colors.colorNow, Gfx.COLOR_TRANSPARENT);
         } else {
-            dc.setColor(colorFg, Gfx.COLOR_TRANSPARENT);
+            dc.setColor(colors.colorFg, Gfx.COLOR_TRANSPARENT);
         }
         dc.drawText(x, y+yd*index, Gfx.FONT_SMALL, day, Gfx.TEXT_JUSTIFY_LEFT);
 
@@ -156,10 +155,10 @@ class UiHelperDetailView extends UiHelperBase {
         dc.fillRectangle(xs, y+4 + yd*index, valueWidth, yd-4);
 
         if ( dc.getTextWidthInPixels(valueText, Gfx.FONT_SYSTEM_XTINY) < valueWidth ) {
-            dc.setColor(colorBg, Gfx.COLOR_TRANSPARENT);
+            dc.setColor(colors.colorBg, Gfx.COLOR_TRANSPARENT);
             dc.drawText(xs+valueWidth-2, y + yd*index, Gfx.FONT_SYSTEM_XTINY, valueText, Gfx.TEXT_JUSTIFY_RIGHT);
         } else {
-            dc.setColor(colorFg, Gfx.COLOR_TRANSPARENT);
+            dc.setColor(colors.colorFg, Gfx.COLOR_TRANSPARENT);
             dc.drawText(xs+valueWidth+2, y + yd*index, Gfx.FONT_SYSTEM_XTINY, valueText, Gfx.TEXT_JUSTIFY_LEFT);
         }
     }

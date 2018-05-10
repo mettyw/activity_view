@@ -3,11 +3,11 @@ using Toybox.Graphics as Gfx;
 
 class ViewDetailsSteps extends ViewDetailsBase {
 
-    function initialize(aDelegate) {
-        ViewDetailsBase.initialize(aDelegate);
+    function initialize(aDelegate, aColorScheme) {
+        ViewDetailsBase.initialize(aDelegate, aColorScheme);
 
-        colorBar = Gfx.COLOR_YELLOW;
-        colorBarShadow = Gfx.COLOR_ORANGE;
+        colorBar = aColorScheme.colorStep;
+        colorBarShadow = aColorScheme.colorStepShadow;
         title = "Steps";
         unit = "steps";
     }

@@ -27,12 +27,8 @@ class UiHelperSummaryView extends UiHelperBase {
     var ys;
     var margin;
 
-    function initialize() {
-        UiHelperBase.initialize();
-    }
-
-    function initColors() {
-        UiHelperBase.initColors();
+    function initialize(aColorScheme) {
+        UiHelperBase.initialize(aColorScheme);
     }
 
     function initLayout(dc) {
@@ -70,18 +66,18 @@ class UiHelperSummaryView extends UiHelperBase {
     }
 
     public function drawUi() {
-        dc.setColor(colorFg, colorBg);
+        dc.setColor(colors.colorFg, colors.colorBg);
         dc.clear();
 
        // dc.setColor(colorBar, Gfx.COLOR_TRANSPARENT);
        // dc.fillRectangle(0, 0, width, 23);
 
-        dc.setColor(colorFg, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(colors.colorFg, Gfx.COLOR_TRANSPARENT);
         dc.drawText(width / 2, 1, Gfx.FONT_SMALL, title, Gfx.TEXT_JUSTIFY_CENTER);
 
         //dc.drawText(width / 2, 20, Gfx.FONT_XTINY, "18-04-01 - 18-04-08", textCenter);
 
-        dc.setColor(colorLine, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(colors.colorLine, Gfx.COLOR_TRANSPARENT);
         // horizontal lines
         //dc.drawLine(x, 23, width-x, 23);
         dc.drawLine(x, y+yd*1, width-x, y+yd*1);
@@ -94,30 +90,30 @@ class UiHelperSummaryView extends UiHelperBase {
         // vertical lines
         dc.drawLine(10+32, y+yd*1, 10+32, y+yd*5);
 
-        dc.setColor(colorFg, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(colors.colorFg, Gfx.COLOR_TRANSPARENT);
         dc.drawText(x, y+yd*1, Gfx.FONT_SMALL, "Sum", Gfx.TEXT_JUSTIFY_LEFT);
         dc.drawText(x, y+yd*2, Gfx.FONT_SMALL, "Max", Gfx.TEXT_JUSTIFY_LEFT);
         dc.drawText(x, y+yd*3, Gfx.FONT_SMALL, "Avg", Gfx.TEXT_JUSTIFY_LEFT);
-        dc.setColor(colorNow, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(colors.colorNow, Gfx.COLOR_TRANSPARENT);
         dc.drawText(x, y+yd*4, Gfx.FONT_SMALL, "Now", Gfx.TEXT_JUSTIFY_LEFT);
 
         drawCellValue(1, 0, "kCal");
         drawCellValue(2, 0, "steps");
         drawCellValue(3, 0, "m");
 
-        dc.setColor(colorCal, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(colors.colorCal, Gfx.COLOR_TRANSPARENT);
         drawCellValue(1, 1, calSum);
         drawCellValue(1, 2, calMax);
         drawCellValue(1, 3, calAvg);
         drawCellValue(1, 4, calNow);
 
-        dc.setColor(colorStep, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(colors.colorStep, Gfx.COLOR_TRANSPARENT);
         drawCellValue(2, 1, stepSum);
         drawCellValue(2, 2, stepMax);
         drawCellValue(2, 3, stepAvg);
         drawCellValue(2, 4, stepNow);
 
-        dc.setColor(colorDist, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(colors.colorDist, Gfx.COLOR_TRANSPARENT);
         drawCellValue(3, 1, distSum);
         drawCellValue(3, 2, distMax);
         drawCellValue(3, 3, distAvg);
