@@ -9,7 +9,7 @@ class ViewOverlay extends ViewBase {
 
     // Update the view
     function onUpdate(dc) {
-        if ( ViewBase.checkHasData() == false ) {
+        if ( ViewBase.checkHasData(dc) == false ) {
             return;
         }
 

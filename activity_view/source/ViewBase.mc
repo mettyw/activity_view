@@ -16,10 +16,10 @@ class ViewBase extends Ui.View {
         delegate.persistState();
     }
 
-    function checkHasData() {
+    function checkHasData(dc) {
         if (ActivityMonitor.getHistory().size() == 0) {
             dc.setColor(Gfx.COLOR_BLACK, Gfx.COLOR_TRANSPARENT);
-            dc.drawText(109, 109, Graphics.FONT_TINY, "NO DATA",
+            dc.drawText(109, 109, Graphics.FONT_TINY, "NO DATA TO DISPLAY",
             Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
             return false;
         } else {

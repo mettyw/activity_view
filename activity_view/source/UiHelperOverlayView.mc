@@ -99,6 +99,9 @@ class UiHelperOverlayView extends UiHelperBase {
         dc.drawLine(x, y+barMaxHeight+4, width-x, y+barMaxHeight+4);
         dc.drawLine(x, y+barMaxHeight+4+fontHeight, width-x, y+barMaxHeight+4+fontHeight);
 
+        // draw legend
+        drawLegend();
+
         for (var i = 0; i < data.size(); i++) {
             var valueCal = data[i][0];
             var valueDay = data[i][3];
@@ -135,24 +138,47 @@ class UiHelperOverlayView extends UiHelperBase {
             var yDist2 = barMaxHeight * (valueDist2 / valueMaxDist.toFloat());
 
             dc.setColor(colors.colorDistShadow, Gfx.COLOR_TRANSPARENT);
-            dc.drawLine(xs+2+xd*(i+0.5), ys + (barMaxHeight - yDist1)+1, xs+2+xd*(i+0.5+1), ys + (barMaxHeight - yDist2)+1);
+            dc.drawLine(xs+2+xd*(i+0.5)+1, ys + (barMaxHeight - yDist1)+2, xs+2+xd*(i+0.5+1), ys + (barMaxHeight - yDist2)+1);
 
             dc.setColor(colors.colorDist, Gfx.COLOR_TRANSPARENT);
             dc.drawLine(xs+2+xd*(i+0.5), ys + (barMaxHeight - yDist1), xs+2+xd*(i+0.5+1), ys + (barMaxHeight - yDist2));
+            dc.drawLine(xs+2+xd*(i+0.5), ys + (barMaxHeight - yDist1)+1, xs+2+xd*(i+0.5+1), ys + (barMaxHeight - yDist2));
 
             var yStep1 = barMaxHeight * (valueStep1 / valueMaxStep.toFloat());
             var yStep2 = barMaxHeight * (valueStep2 / valueMaxStep.toFloat());
 
             dc.setColor(colors.colorStepShadow, Gfx.COLOR_TRANSPARENT);
-            dc.drawLine(xs+2+xd*(i+0.5), ys + (barMaxHeight - yStep1)+1, xs+2+xd*(i+0.5+1), ys + (barMaxHeight - yStep2)+1);
+            dc.drawLine(xs+2+xd*(i+0.5)+1, ys + (barMaxHeight - yStep1)+2, xs+2+xd*(i+0.5+1), ys + (barMaxHeight - yStep2)+1);
 
             dc.setColor(colors.colorStep, Gfx.COLOR_TRANSPARENT);
             dc.drawLine(xs+2+xd*(i+0.5), ys + (barMaxHeight - yStep1), xs+2+xd*(i+0.5+1), ys + (barMaxHeight - yStep2));
+            dc.drawLine(xs+2+xd*(i+0.5), ys + (barMaxHeight - yStep1)+1, xs+2+xd*(i+0.5+1), ys + (barMaxHeight - yStep2));
 
         }
 
     }
 
+    function drawLegend() {
+        var yBase = y+barMaxHeight+4+fontHeight+10+2;
+        var x1 = x+30;
+        var x2 = x+80;
+        var x3 = x+130;
+        var r = 3;
+        var margin = 4;
+        dc.setColor(colors.colorCal, Gfx.COLOR_TRANSPARENT);
+        dc.fillCircle(x1, yBase, r);
+
+        dc.setColor(colors.colorStep, Gfx.COLOR_TRANSPARENT);
+        dc.fillCircle(x2, yBase, r);
+
+        dc.setColor(colors.colorDist, Gfx.COLOR_TRANSPARENT);
+        dc.fillCircle(x3, yBase, r);
+
+        dc.setColor(colors.colorFg2, Gfx.COLOR_TRANSPARENT);
+        dc.drawText(x1+r+margin, yBase-10, Gfx.FONT_TINY, "kCal", Gfx.TEXT_JUSTIFY_LEFT);
+        dc.drawText(x2+r+margin, yBase-10, Gfx.FONT_TINY, "step", Gfx.TEXT_JUSTIFY_LEFT);
+        dc.drawText(x3+r+margin, yBase-10, Gfx.FONT_TINY, "dist", Gfx.TEXT_JUSTIFY_LEFT);
+    }
 }
 
 

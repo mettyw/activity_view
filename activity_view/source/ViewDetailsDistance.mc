@@ -9,12 +9,12 @@ class ViewDetailsDistance extends ViewDetailsBase {
         colorBar = aColorScheme.colorDist;
         colorBarShadow = aColorScheme.colorDistShadow;
         title = "Distance";
-        unit = "m";
+        unit = "km";
     }
 
     function getItemValue(item) {
         // convert from cm to m
-        return item.distance/(100.0);
+        return item.distance/(100.0*1000);
     }
 
 }
