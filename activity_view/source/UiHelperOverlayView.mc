@@ -160,9 +160,9 @@ class UiHelperOverlayView extends UiHelperBase {
 
     function drawLegend() {
         var yBase = y+barMaxHeight+4+fontHeight+10+2;
-        var x1 = x+30;
-        var x2 = x+80;
-        var x3 = x+130;
+        var x1 = x+32;
+        var x2 = x+82;
+        var x3 = x+132;
         var r = 3;
         var margin = 4;
         dc.setColor(colors.colorCal, Gfx.COLOR_TRANSPARENT);
