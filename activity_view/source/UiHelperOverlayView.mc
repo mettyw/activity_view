@@ -35,11 +35,11 @@ class UiHelperOverlayView extends UiHelperBase {
         UiHelperBase.initLayout(dc);
         maxWidth = width - 20*2 - 30;
 
-        x = 10;
+        x = 6;
         y = 22;
         //yd = 20;
         margin = 10;
-        xs = 2+margin;
+        xs = x+margin;
         ys = y+3;
         // calculate cell size for 8 columns, considering the width and margins
         xd = (width - (15+xs)) / 8;
@@ -95,9 +95,9 @@ class UiHelperOverlayView extends UiHelperBase {
         dc.setColor(colors.colorLine, Gfx.COLOR_TRANSPARENT);
 
         // horizontal lines
-        dc.drawLine(x, y, width-x, y);
-        dc.drawLine(x, y+barMaxHeight+4, width-x, y+barMaxHeight+4);
-        dc.drawLine(x, y+barMaxHeight+4+fontHeight, width-x, y+barMaxHeight+4+fontHeight);
+        dc.drawLine(xs, y, width-xs, y);
+        dc.drawLine(xs, y+barMaxHeight+4, width-xs, y+barMaxHeight+4);
+        dc.drawLine(xs, y+barMaxHeight+4+fontHeight, width-xs, y+barMaxHeight+4+fontHeight);
 
         // draw legend
         drawLegend();
@@ -138,21 +138,21 @@ class UiHelperOverlayView extends UiHelperBase {
             var yDist2 = barMaxHeight * (valueDist2 / valueMaxDist.toFloat());
 
             dc.setColor(colors.colorDistShadow, Gfx.COLOR_TRANSPARENT);
-            dc.drawLine(xs+2+xd*(i+0.5)+1, ys + (barMaxHeight - yDist1)+2, xs+2+xd*(i+0.5+1), ys + (barMaxHeight - yDist2)+1);
+            dc.drawLine(xs+2+xd*(i+0.5)+1, ys + (barMaxHeight - yDist1)+1, xs+2+xd*(i+0.5+1), ys + (barMaxHeight - yDist2)+1);
 
             dc.setColor(colors.colorDist, Gfx.COLOR_TRANSPARENT);
+            dc.drawLine(xs+2+xd*(i+0.5)-1, ys + (barMaxHeight - yDist1)-1, xs+2+xd*(i+0.5+1), ys + (barMaxHeight - yDist2));
             dc.drawLine(xs+2+xd*(i+0.5), ys + (barMaxHeight - yDist1), xs+2+xd*(i+0.5+1), ys + (barMaxHeight - yDist2));
-            dc.drawLine(xs+2+xd*(i+0.5), ys + (barMaxHeight - yDist1)+1, xs+2+xd*(i+0.5+1), ys + (barMaxHeight - yDist2));
 
             var yStep1 = barMaxHeight * (valueStep1 / valueMaxStep.toFloat());
             var yStep2 = barMaxHeight * (valueStep2 / valueMaxStep.toFloat());
 
             dc.setColor(colors.colorStepShadow, Gfx.COLOR_TRANSPARENT);
-            dc.drawLine(xs+2+xd*(i+0.5)+1, ys + (barMaxHeight - yStep1)+2, xs+2+xd*(i+0.5+1), ys + (barMaxHeight - yStep2)+1);
+            dc.drawLine(xs+2+xd*(i+0.5)+1, ys + (barMaxHeight - yStep1)+1, xs+2+xd*(i+0.5+1), ys + (barMaxHeight - yStep2)+1);
 
             dc.setColor(colors.colorStep, Gfx.COLOR_TRANSPARENT);
+            dc.drawLine(xs+2+xd*(i+0.5)-1, ys + (barMaxHeight - yStep1)-1, xs+2+xd*(i+0.5+1), ys + (barMaxHeight - yStep2));
             dc.drawLine(xs+2+xd*(i+0.5), ys + (barMaxHeight - yStep1), xs+2+xd*(i+0.5+1), ys + (barMaxHeight - yStep2));
-            dc.drawLine(xs+2+xd*(i+0.5), ys + (barMaxHeight - yStep1)+1, xs+2+xd*(i+0.5+1), ys + (barMaxHeight - yStep2));
 
         }
 

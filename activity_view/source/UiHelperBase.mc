@@ -41,7 +41,11 @@ class UiHelperBase {
                 return ">99999";
             }
             else {
-                return value.format("%d");
+                /*if (value > 999 ) {
+                    return value/1000 + "," + value%1000;
+                } else {*/
+                    return value.format("%d");
+                //}
             }
         }
         else {

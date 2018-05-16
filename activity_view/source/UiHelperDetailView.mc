@@ -154,7 +154,7 @@ class UiHelperDetailView extends UiHelperBase {
         dc.setColor(colorBar, Gfx.COLOR_TRANSPARENT);
         dc.fillRectangle(xs, y+4 + yd*index, valueWidth, yd-4);
 
-        if ( dc.getTextWidthInPixels(valueText, Gfx.FONT_SYSTEM_XTINY) < valueWidth ) {
+        if ( dc.getTextWidthInPixels(valueText, Gfx.FONT_SYSTEM_XTINY)+2 < valueWidth ) {
             dc.setColor(colors.colorBg, Gfx.COLOR_TRANSPARENT);
             dc.drawText(xs+valueWidth-2, y + yd*index, Gfx.FONT_SYSTEM_XTINY, valueText, Gfx.TEXT_JUSTIFY_RIGHT);
         } else {
