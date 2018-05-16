@@ -9,7 +9,7 @@ class ViewSummary extends ViewBase {
 
     // Update the view
     function onUpdate(dc) {
-        if ( ViewBase.checkHasData() == false ) {
+        if ( ViewBase.checkHasData(dc) == false ) {
             return;
         }
 
@@ -17,7 +17,7 @@ class ViewSummary extends ViewBase {
 
         var stepNow = info.steps;
         var calNow = info.calories;
-        var distNow = info.distance/100.0; // convert cm to m
+        var distNow = info.distance/(100.0*1000); // convert cm to m
 
         var history = ActivityMonitor.getHistory();
 
@@ -31,13 +31,13 @@ class ViewSummary extends ViewBase {
         for (var i = 0; i < history.size(); i++) {
             var item = history[i];
             stepSum += item.steps;
-            distSum += item.distance/100.0; // convert cm to m;
+            distSum += item.distance/(100.0*1000); // convert cm to m;
             calSum += item.calories;
             if ( stepMax < item.steps ) {
                 stepMax = item.steps;
             }
             if ( distMax < item.distance ) {
-                distMax = item.distance/100.0; // convert cm to m;
+                distMax = item.distance/(100.0*1000); // convert cm to m;
             }
             if ( calMax < item.calories ) {
                 calMax = item.calories;
