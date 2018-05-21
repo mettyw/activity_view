@@ -8,8 +8,9 @@ class ViewStateController extends Ui.InputDelegate {
     const KEY_LOADLASTVIEWSTATE = "LoadLastViewState";
     const KEY_LASTVIEWSTATE = "LastViewState";
 
-    const VIEW_COUNT = 5;
+    const VIEW_COUNT = 6;
 
+    private var view;
     private var viewState = 0;
     private var colorScheme;
 
@@ -42,21 +43,27 @@ class ViewStateController extends Ui.InputDelegate {
     }
 
     public function getCurrentView() {
-        if ( viewState == 1 ) {
-          return new ViewDetailsCalories(self, colorScheme);
+        if ( view == null ) {
+            if ( viewState == 1 ) {
+                view = new ViewDetailsCalories(self, colorScheme);
+            }
+            else if ( viewState == 2 ) {
+                view = new ViewDetailsSteps(self, colorScheme);
+            }
+            else if ( viewState == 3 ) {
+                view = new ViewDetailsDistance(self, colorScheme);
+            }
+            else if ( viewState == 4 ) {
+                view = new ViewOverlay(self, colorScheme);
+            }
+            else if ( viewState == 5 ) {
+                view = new ViewCoach(self, colorScheme);
+            }
+            else {
+              view = new ViewSummary(self, colorScheme);
+            }
         }
-        else if ( viewState == 2 ) {
-          return new ViewDetailsSteps(self, colorScheme);
-        }
-        else if ( viewState == 3 ) {
-          return new ViewDetailsDistance(self, colorScheme);
-        }
-        else if ( viewState == 4 ) {
-          return new ViewOverlay(self, colorScheme);
-        }
-        else {
-          return new ViewSummary(self, colorScheme);
-        }
+        return view;
     }
 
     function onKey(evt) {
@@ -67,6 +74,10 @@ class ViewStateController extends Ui.InputDelegate {
 
             var newView = delegate.getCurrentView();
             Ui.switchToView(newView, delegate, Ui.SLIDE_LEFT );
+            return true;
+        }
+        if (evt.getKey() == Ui.KEY_MENU && viewState == 5 ) {
+            view.triggerAction();
             return true;
         }
         return false;
