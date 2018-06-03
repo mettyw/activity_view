@@ -61,7 +61,6 @@ class UiHelperCoachView extends UiHelperBase {
 
         dc.setColor(colors.colorFg, Gfx.COLOR_TRANSPARENT);
         dc.drawText(width / 2, (y+barMaxHeight+4+fontHeight)/2, Gfx.FONT_SMALL, newText, Gfx.TEXT_JUSTIFY_CENTER + Gfx.TEXT_JUSTIFY_VCENTER);
-
     }
 
     private function formatText(text) {

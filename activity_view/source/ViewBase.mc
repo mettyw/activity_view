@@ -19,8 +19,7 @@ class ViewBase extends Ui.View {
     function checkHasData(dc) {
         if (ActivityMonitor.getHistory().size() == 0) {
             dc.setColor(Gfx.COLOR_BLACK, Gfx.COLOR_TRANSPARENT);
-            dc.drawText(109, 109, Graphics.FONT_TINY, "NO DATA TO DISPLAY",
-            Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER);
+            dc.drawText(109, 109, Gfx.FONT_TINY, "Not enough activity data yet.", Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
             return false;
         } else {
             return true;

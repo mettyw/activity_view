@@ -74,10 +74,8 @@ class ViewStateController extends Ui.InputDelegate {
 
             var newView = delegate.getCurrentView();
             Ui.switchToView(newView, delegate, Ui.SLIDE_LEFT );
-            return true;
-        }
-        if (evt.getKey() == Ui.KEY_MENU && viewState == 5 ) {
-            view.triggerAction();
+
+            view = null;
             return true;
         }
         return false;
