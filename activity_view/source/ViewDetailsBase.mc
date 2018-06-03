@@ -8,8 +8,8 @@ class ViewDetailsBase extends ViewBase {
     var title = "Title";
     var unit = "unit";
 
-    function initialize(aDelegate, aColorScheme) {
-        ViewBase.initialize(aDelegate, aColorScheme);
+    function initialize(aColorScheme) {
+        ViewBase.initialize(aColorScheme);
     }
 
     // Update the view

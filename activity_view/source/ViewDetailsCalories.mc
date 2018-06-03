@@ -3,8 +3,8 @@ using Toybox.Graphics as Gfx;
 
 class ViewDetailsCalories extends ViewDetailsBase {
 
-    function initialize(aDelegate, aColorScheme) {
-        ViewDetailsBase.initialize(aDelegate, aColorScheme);
+    function initialize(aColorScheme) {
+        ViewDetailsBase.initialize(aColorScheme);
 
         colorBar = aColorScheme.colorCal;
         colorBarShadow = aColorScheme.colorCalShadow;

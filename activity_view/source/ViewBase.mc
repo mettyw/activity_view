@@ -3,17 +3,15 @@ using Toybox.Graphics as Gfx;
 
 class ViewBase extends Ui.View {
 
-    var delegate;
     var colorScheme;
 
-    function initialize(aDelegate, aColorScheme) {
+    function initialize(aColorScheme) {
         View.initialize();
-        delegate = aDelegate;
         colorScheme = aColorScheme;
     }
 
     function onHide() {
-        delegate.persistState();
+        colorScheme = null;
     }
 
     function checkHasData(dc) {

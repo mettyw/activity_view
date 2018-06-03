@@ -3,8 +3,8 @@ using Toybox.Graphics as Gfx;
 
 class ViewDetailsSteps extends ViewDetailsBase {
 
-    function initialize(aDelegate, aColorScheme) {
-        ViewDetailsBase.initialize(aDelegate, aColorScheme);
+    function initialize(aColorScheme) {
+        ViewDetailsBase.initialize(aColorScheme);
 
         colorBar = aColorScheme.colorStep;
         colorBarShadow = aColorScheme.colorStepShadow;

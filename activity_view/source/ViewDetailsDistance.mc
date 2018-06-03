@@ -3,8 +3,8 @@ using Toybox.Graphics as Gfx;
 
 class ViewDetailsDistance extends ViewDetailsBase {
 
-    function initialize(aDelegate, aColorScheme) {
-        ViewDetailsBase.initialize(aDelegate, aColorScheme);
+    function initialize(aColorScheme) {
+        ViewDetailsBase.initialize(aColorScheme);
 
         colorBar = aColorScheme.colorDist;
         colorBarShadow = aColorScheme.colorDistShadow;

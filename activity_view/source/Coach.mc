@@ -12,6 +12,7 @@ class Coach {
     //data
     var data;
     var average;
+    var deviation;
     var min;
     var max;
     var today;
@@ -57,13 +58,24 @@ class Coach {
         daybeforeyesterday = data[1];
         samedaylastweek = data[6];
         average = [calSum / data.size(), stepSum / data.size(), 0, distSum / data.size(), 24];
+
+        deviation = [0, 0, 0, 0, 24];
+        for (var i = 0; i < data.size(); i++) {
+            deviation[IDX_CAL] = deviation[IDX_CAL] + (data[i][IDX_CAL] - average[IDX_CAL]) * (data[i][IDX_CAL] - average[IDX_CAL]);
+            deviation[IDX_STEP] = deviation[IDX_STEP] + (data[i][IDX_STEP] - average[IDX_STEP]) * (data[i][IDX_STEP] - average[IDX_STEP]);
+            deviation[IDX_DIST] = deviation[IDX_DIST] + (data[i][IDX_DIST] - average[IDX_DIST]) * (data[i][IDX_DIST] - average[IDX_DIST]);
+        }
+        deviation[IDX_CAL] = (Math.sqrt( deviation[IDX_CAL] / data.size() )) / average[IDX_CAL];
+        deviation[IDX_STEP] = (Math.sqrt( deviation[IDX_STEP] / data.size() )) / average[IDX_STEP];
+        deviation[IDX_DIST] = (Math.sqrt( deviation[IDX_DIST] / data.size() )) / average[IDX_DIST];
+
     }
 
     function getText() {
         var candidates = getCandidateTexts();
 
         var rnd = Math.rand().abs() % candidates.size();
-        return candidates[rnd];
+        return candidates[rnd] + " ("+ rnd +"/"+ candidates.size() +")";
     }
 
     private function getCandidateTexts() {
@@ -146,7 +158,7 @@ class Coach {
                 if ( current_hour() <= 18 ) {
                     if ( vcalories( yesterday ) > vcalories( average ) ) {
                         if ( ( vcalories( today ) + remaining_calories_estimate_based_on( min ) ) < vcalories( average ) ) {
-                            texts.add("You were quite active yesterday, so there is nothing wrong with going a bit more slowly today." + " " +  vcalories(today) + "+" + remaining_calories_estimate_based_on( min ) + " vs. " + vcalories( average ) );
+                            texts.add("You were quite active yesterday. Maintain a regular level of activity today to give your body time to recover." + " " +  vcalories(today) + "+" + remaining_calories_estimate_based_on( min ) + " vs. " + vcalories( average ) );
                         }
                     }
                     else {
@@ -226,6 +238,23 @@ class Coach {
             texts.add("Compared to last week, your calorie burn rate is lacking a bit..." + " " +  calories_per_hour( today ) + " vs. " + calories_per_hour( samedaylastweek ) );
         }
 */
+        if (deviation[IDX_CAL] > 0.6) {
+            texts.add("You are extremely active (deviation is cal: " + deviation[IDX_CAL]);
+        }
+        else if (deviation[IDX_CAL] > 0.3) {
+            texts.add("You are very active (deviation is cal: " + deviation[IDX_CAL]);
+        }
+        else {
+            if ( ( ( vcalories( average ) - vcalories( min ) ) / vcalories( average ) ) > 0.4) {
+                texts.add("Many of your calorie values are close together. Are you resting enough? (deviation is cal: " + deviation[IDX_CAL]);
+            }
+            if ( ( ( vcalories( average ) - vcalories( min ) ) / vcalories( average ) ) < 0.2) {
+                texts.add("Many of your calorie values are close together. Maybe you can work out more? (deviation is cal: " + deviation[IDX_CAL]);
+            }
+        }
+        if ( ( ( vcalories( max ) - vcalories( min ) ) / vcalories( min ) ) < 0.2) {
+            texts.add("There is not much variance in your calorie consumption. How about doing a workout today? (deviation is cal: " + deviation[IDX_CAL]);
+        }
         if ( texts.size() == 0 ) {
             if ( current_hour() < 10 ) {
                 texts.add("Good morning, today is going to be a wonderful day!");
@@ -234,6 +263,7 @@ class Coach {
                 texts.add("There is no quick and easy way to the body you want... commit yourself now to your workout and get started! - Tracy Anderson");
             }
         }
+        texts.add("Your deviation is cal: " + deviation[IDX_CAL] + " step: " + deviation[IDX_STEP] + " dist: " + deviation[IDX_DIST]);
         return texts;
     }
 
@@ -259,12 +289,12 @@ class Coach {
     }
 
     private function remaining_calories_estimate_based_on(day) {
-        var remaining_hours = 24 - Time.Gregorian.info(Time.now(), Time.FORMAT_LONG).hour;
+        var remaining_hours = 24 - today[IDX_DAY];
         return (vcalories(day)/day[IDX_DAY]) * remaining_hours;
     }
 
     private function current_hour() {
-        return Time.Gregorian.info(Time.now(), Time.FORMAT_LONG).hour;
+        return today[IDX_DAY];
     }
 
     private function above_average_steps(day) {

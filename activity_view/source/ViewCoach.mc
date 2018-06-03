@@ -5,8 +5,8 @@ class ViewCoach extends ViewBase {
 
     var text = "n/a";
 
-    function initialize(aDelegate, aColorScheme) {
-        ViewBase.initialize(aDelegate, aColorScheme);
+    function initialize(aColorScheme) {
+        ViewBase.initialize(aColorScheme);
 
         var info = ActivityMonitor.getInfo();
         var vhour = Time.Gregorian.info(Time.now(), Time.FORMAT_LONG).hour.toFloat() + (Time.Gregorian.info(Time.now(), Time.FORMAT_LONG).min.toFloat() / 60);

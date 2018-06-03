@@ -3,8 +3,8 @@ using Toybox.Graphics as Gfx;
 
 class ViewSummary extends ViewBase {
 
-    function initialize(aDelegate, aColorScheme) {
-        ViewBase.initialize(aDelegate, aColorScheme);
+    function initialize(aColorScheme) {
+        ViewBase.initialize(aColorScheme);
     }
 
     // Update the view

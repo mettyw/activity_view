@@ -45,22 +45,22 @@ class ViewStateController extends Ui.InputDelegate {
     public function getCurrentView() {
         if ( view == null ) {
             if ( viewState == 1 ) {
-                view = new ViewDetailsCalories(self, colorScheme);
+                view = new ViewDetailsCalories(colorScheme);
             }
             else if ( viewState == 2 ) {
-                view = new ViewDetailsSteps(self, colorScheme);
+                view = new ViewDetailsSteps(colorScheme);
             }
             else if ( viewState == 3 ) {
-                view = new ViewDetailsDistance(self, colorScheme);
+                view = new ViewDetailsDistance(colorScheme);
             }
             else if ( viewState == 4 ) {
-                view = new ViewOverlay(self, colorScheme);
+                view = new ViewOverlay(colorScheme);
             }
             else if ( viewState == 5 ) {
-                view = new ViewCoach(self, colorScheme);
+                view = new ViewCoach(colorScheme);
             }
             else {
-              view = new ViewSummary(self, colorScheme);
+              view = new ViewSummary(colorScheme);
             }
         }
         return view;
@@ -71,11 +71,13 @@ class ViewStateController extends Ui.InputDelegate {
             var delegate = new ViewStateController();
             viewState = (viewState + 1 ) % VIEW_COUNT;
             delegate.setState(viewState);
+            delegate.persistState();
 
             var newView = delegate.getCurrentView();
             Ui.switchToView(newView, delegate, Ui.SLIDE_LEFT );
 
             view = null;
+            colorScheme = null;
             return true;
         }
         return false;
