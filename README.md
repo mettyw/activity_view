@@ -26,4 +26,4 @@ Supported devices
 * Forerunner 230
 
 
-Soon to be available at [Garmin Connect IQ Store](https://apps.germin.com)
+Available at [Garmin Connect IQ Store](https://apps.garmin.com)
